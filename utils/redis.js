@@ -4,7 +4,9 @@ import { promisify } from 'util';
 class RedisClient {
   constructor() {
     this.client = createClient();
-    this.client.on('error', (error) => console.log(`Redis client not connected to the server: ${error}`))
+    this.client.on('error', (error) => {
+      console.log(`Redis client not connected to the server: ${error}`);
+    })
     this.getAsync = promisify(this.client.get).bind(this.client);
     this.setAsync = promisify(this.client.set).bind(this.client);
     this.expireAsync = promisify(this.client.expire).bind(this.client);
