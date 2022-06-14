@@ -6,7 +6,7 @@ class RedisClient {
     this.client = createClient();
     this.client.on('error', (error) => {
       console.log(`Redis client not connected to the server: ${error}`);
-    })
+    });
     this.getAsync = promisify(this.client.get).bind(this.client);
     this.setAsync = promisify(this.client.set).bind(this.client);
     this.expireAsync = promisify(this.client.expire).bind(this.client);
@@ -21,14 +21,14 @@ class RedisClient {
     return await this.getAsync(key);
   }
 
-  async set(key, value, duration){
+  async set(key, value, duration) {
     this.setAsync(key, value);
     this.expireAsync(key, duration);
   }
 
-  async del(key){
+  async del(key) {
     this.delAsync(key);
   }
 }
-const redisClient = new RedisClient()
-module.exports = redisClient
+const redisClient = new RedisClient();
+module.exports = redisClient;
