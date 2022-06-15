@@ -14,6 +14,7 @@ router.get('/files/:id', ((request, response) => FileController.getShow(request,
 router.get('/files', ((request, response) => FileController.getIndex(request, response)));
 router.put('/files/:id/publish', ((request, response) => FileController.putPublish(request, response)));
 router.put('/files/:id/publish', ((request, response) => FileController.putUnpublish(request, response)));
+router.put('/files/:id/data', ((request, response) => FileController.getFile(request, response)));
 router.get('/connect', ((request, response) => AuthController.getConnect(request, response)));
 router.get('/disconnect', ((request, response) => AuthController.getDisconnect(request, response)));
 router.get('/users/me', ((request, response) => UsersController.getMe(request, response)));
